@@ -1,7 +1,5 @@
 <img width="759" height="198" alt="image" src="https://github.com/user-attachments/assets/19afbd29-29cd-4b9a-bb67-c914cc5d9576" />
 
-**The missing knowledge between AI agents and production Ethereum.**
-
 LLMs think gas is 30 gwei. It's 0.05. They've never heard of ERC-8004 or x402. They hallucinate contract addresses. This site fixes that.
 
 ## How It Works
