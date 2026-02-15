@@ -7,7 +7,7 @@ LLMs think gas is 30 gwei. It's 0.05. They've never heard of ERC-8004 or x402. T
 Each skill is a markdown file. Give any URL to your AI agent — it reads it and instantly corrects its Ethereum knowledge.
 
 ```
-https://ethskills.com/SKILL.md          ← everything (91KB)
+https://ethskills.com/SKILL.md          ← everything (116KB)
 https://ethskills.com/gas/SKILL.md      ← just gas & costs
 https://ethskills.com/why/SKILL.md      ← why ethereum
 ```
@@ -33,6 +33,8 @@ No install. No CLI. No package manager. Just a URL.
 | [Contract Addresses](addresses/SKILL.md) | Hallucinate addresses — these are verified onchain |
 | [Concepts](concepts/SKILL.md) | Nothing is automatic, incentive design, randomness pitfalls |
 | [Security](security/SKILL.md) | Token decimals, reentrancy, oracle manipulation, vault inflation, pre-deploy checklist |
+| [Frontend UX](frontend-ux/SKILL.md) | Onchain button rules, three-button approval flow, Address components, USD values |
+| [Frontend Playbook](frontend-playbook/SKILL.md) | Fork mode, IPFS deploy, Vercel config, ENS setup, production checklist |
 
 ## Security Guardrails
 
