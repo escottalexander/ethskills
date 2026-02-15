@@ -1,6 +1,6 @@
 ---
 name: building-blocks
-description: DeFi legos and protocol composability on Ethereum. Major protocols (Uniswap, Aave, Compound, MakerDAO, Yearn, Curve), how they work, how to build on them, and how to combine them into novel products. Use when building DeFi integrations, designing tokenomics, or when a user wants to compose existing protocols into something new.
+description: DeFi legos and protocol composability on Ethereum and L2s. Major protocols per chain — Aerodrome on Base, GMX/Pendle on Arbitrum, Velodrome on Optimism — plus mainnet primitives (Uniswap, Aave, Compound, Curve). How they work, how to build on them, and how to combine them. Use when building DeFi integrations, choosing protocols on a specific L2, designing yield strategies, or composing existing protocols into something new.
 ---
 
 # Building Blocks (DeFi Legos)
@@ -14,6 +14,8 @@ description: DeFi legos and protocol composability on Ethereum. Major protocols 
 
 **Costs changed everything:** A flash loan arbitrage on mainnet costs ~$0.05-0.50 in gas now (was $5-50). This opens composability patterns that were previously uneconomical.
 
+**The dominant DEX on each L2 is NOT Uniswap.** Aerodrome dominates Base, Velodrome dominates Optimism, Camelot is a major native DEX on Arbitrum. Don't default to Uniswap on every chain.
+
 ## Key Protocol Addresses (Verified Feb 2026)
 
 | Protocol | Contract | Mainnet Address |
@@ -25,7 +27,7 @@ description: DeFi legos and protocol composability on Ethereum. Major protocols 
 | Uniswap Universal Router | Router | `0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD` |
 | Aave V3 Pool | Pool | `0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2` |
 
-See `addresses/SKILL.md` for complete multi-chain address list.
+See `addresses/SKILL.md` for complete multi-chain address list including L2-native protocols (Aerodrome, GMX, Pendle, Velodrome, Camelot, SyncSwap, Morpho).
 
 ## Uniswap V4 Hooks (New)
 
@@ -162,13 +164,69 @@ contract FlashLoanArb is FlashLoanSimpleReceiverBase {
 **Aave V3 Pool (mainnet):** `0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2`
 **Flash loan fee:** 0.05% (5 basis points). Free if you repay to an Aave debt position.
 
-## Building on Arbitrum (Highest DeFi Liquidity L2)
+## Building on Base
 
-Key protocols on Arbitrum:
-- **GMX** — perps DEX, $500M+ TVL
-- **Uniswap, Curve, Balancer** — DEXs
-- **Radiant, Aave** — lending
-- **Pendle** — yield trading
+**Dominant DEX: Aerodrome** (~$500-600M TVL) — NOT Uniswap. Uses the ve(3,3) model.
+
+### How Aerodrome Works (Critical Difference from Uniswap)
+- **LPs deposit tokens** into pools → earn **AERO emissions** (not trading fees!)
+- **veAERO voters** lock AERO → vote on which pools get emissions → earn **100% of trading fees + bribes**
+- This is the opposite of Uniswap where LPs earn fees directly
+- **Flywheel:** Pools generating most fees → attract most votes → get most emissions → attract more LPs → deeper liquidity → more fees
+
+### Aerodrome Swap (Router Interface)
+```solidity
+// Aerodrome Router: 0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43 (Base)
+struct Route {
+    address from;
+    address to;
+    bool stable;       // true = stable pair (like Curve), false = volatile (like Uni V2)
+    address factory;   // 0x420DD381b31aEf6683db6B902084cB0FFECe40Da
+}
+
+// Swap via Router
+function swapExactTokensForTokens(
+    uint256 amountIn,
+    uint256 amountOutMin,
+    Route[] calldata routes,
+    address to,
+    uint256 deadline
+) external returns (uint256[] memory amounts);
+```
+
+### Base-Specific Patterns
+- **Coinbase Smart Wallet** — ERC-4337 wallet, passkey auth, gasless txs via Coinbase paymaster
+- **OnchainKit** — `npm create onchain` to bootstrap a Base app with React components
+- **Farcaster Frames v2** — mini-apps embedded in social posts that trigger onchain actions
+- **AgentKit** — Coinbase's framework for AI agents to interact onchain
+
+## Building on Arbitrum (Highest DeFi Liquidity)
+
+### GMX V2 — How GM Pools Work
+- **Each market has its own isolated pool** (unlike V1's single GLP pool)
+- LPs deposit into GM (liquidity) pools → receive GM tokens
+- **Fully Backed markets:** ETH/USD backed by ETH + USDC. Backing tokens match the traded asset.
+- **Synthetic markets:** DOGE/USD backed by ETH + USDC. Uses ADL (Auto-Deleveraging) when thresholds are reached.
+- LPs earn: trading fees, liquidation fees, borrowing fees, swap fees. But bear risk from trader PnL.
+
+### Pendle — Yield Tokenization
+Pendle splits yield-bearing assets into principal and yield components:
+
+1. **SY (Standardized Yield):** Wraps any yield-bearing asset. E.g., wstETH → SY-wstETH.
+2. **PT (Principal Token):** The principal. Redeemable 1:1 at maturity. Trades at a discount (discount = implied yield).
+3. **YT (Yield Token):** All yield until maturity. Value decays to 0 at maturity.
+4. **Core invariant:** `SY_value = PT_value + YT_value`
+
+**Use cases:**
+- Buy PT at discount = **lock in fixed yield** (like a zero-coupon bond)
+- Buy YT = **leverage your yield exposure** (bet yield goes up)
+- LP in Pendle pools = earn trading fees + PENDLE incentives
+
+### Arbitrum-Specific Tech
+- **Stylus:** Write smart contracts in Rust/C++/WASM alongside EVM (10-100x gas savings for compute-heavy operations)
+- **Orbit:** Launch custom L3 chains (47 live on mainnet)
+
+See `addresses/SKILL.md` for all verified protocol addresses (GMX, Pendle, Camelot, Aerodrome, Velodrome, SyncSwap, Morpho).
 
 ## Discovery Resources
 
