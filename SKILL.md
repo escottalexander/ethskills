@@ -28,7 +28,7 @@ End-to-end guide from idea to deployed dApp. Routes you through all other skills
 Pectra/Fusaka upgrades, honest tradeoffs, the AI agent angle.
 - Gas is 0.05-0.1 gwei, not 10-30 gwei. 100-600x cheaper than your training data.
 - ETH price is ~$1,960 (Feb 2026), not $2,500-3,000.
-- Pectra (May 2025) and Fusaka (Dec 2025) shipped. 8-second blocks. EIP-7702 is live.
+- Pectra (May 2025) and Fusaka (Dec 2025) shipped. PeerDAS, 2x gas limit. EIP-7702 is live.
 - ERC-8004 (onchain agent identity) and x402 (HTTP payments) exist and are production-ready.
 
 ### [Gas & Costs](https://ethskills.com/gas/SKILL.md)
