@@ -232,6 +232,8 @@ pollingInterval: 3000,  // 3 seconds, not the default 30000
 
 **Keep the API key in `.env.local`** — never hardcode it in config files that get committed to Git.
 
+> ⚠️ **SE2's `wagmiConfig.tsx` adds a bare `http()` (no URL) as a fallback transport.** Viem resolves bare `http()` to the chain's default public RPC (e.g. `mainnet.base.org` for Base). Even with `rpcOverrides` set in scaffold config, the public RPC **will still get hit** because viem's `fallback()` fires transports in parallel. **You must remove the bare `http()` from the fallback array in `services/web3/wagmiConfig.tsx`** so only your configured RPCs are used. If you don't, your app will spam the public RPC with every poll cycle and get 429 rate-limited in production.
+
 **Monitor RPC usage:** Sensible = 1 request every 3 seconds. If you see 15+ requests/second, you have a bug:
 - Hooks re-rendering in loops
 - Duplicate hook calls
@@ -283,6 +285,7 @@ export const metadata: Metadata = {
 - [ ] All SE2 default branding removed (README, footer, favicon, tab title)
 - [ ] Browser tab title is correct
 - [ ] RPC overrides set (not public RPCs)
+- [ ] Bare `http()` removed from wagmiConfig.tsx fallback array (no silent public RPC fallback)
 - [ ] `pollingInterval` is 3000
 - [ ] All contract addresses match what's deployed
 - [ ] No hardcoded testnet/localhost values in production code
