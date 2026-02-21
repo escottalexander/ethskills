@@ -98,7 +98,13 @@ Open `packages/nextjs/scaffold.config.ts`:
 - ❌ **FAIL:** `pollingInterval: 30000` (default — makes the UI feel broken, 30 second update lag)
 - ✅ **PASS:** `pollingInterval: 3000`
 - ❌ **FAIL:** Using default Alchemy API key that ships with SE2
-- ✅ **PASS:** `rpcOverrides` uses `process.env.NEXT_PUBLIC_*` variables
+- ❌ **FAIL:** Code references `process.env.NEXT_PUBLIC_*` but the variable isn't actually set in the deployment environment (Vercel/hosting). Falls back to public RPC like `mainnet.base.org` which is rate-limited
+- ✅ **PASS:** `rpcOverrides` uses `process.env.NEXT_PUBLIC_*` variables AND the env var is confirmed set on the hosting platform
+
+**Verify the env var is set, not just referenced.** AI agents will change the code to use `process.env`, see the pattern matches PASS, and move on — without ever setting the actual variable on Vercel/hosting. Check:
+```bash
+vercel env ls | grep RPC
+```
 
 ---
 
@@ -208,7 +214,7 @@ Report each as PASS or FAIL:
 - [ ] USD values next to all token/ETH amounts
 - [ ] OG image is absolute production URL
 - [ ] pollingInterval is 3000
-- [ ] RPC overrides set (not default SE2 key)
+- [ ] RPC overrides set (not default SE2 key) AND env var confirmed set on hosting platform
 - [ ] Favicon updated from SE2 default
 - [ ] Phantom wallet in RainbowKit wallet list
 - [ ] Mobile: ALL transaction buttons deep link to wallet (fire TX first, then `setTimeout(openWallet, 2000)`)
