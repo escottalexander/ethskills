@@ -443,29 +443,24 @@ h2 {
 
 <div class="how-to-methods">
   <div class="how-to-method">
-    <div class="how-to-method-title">Direct fetch</div>
-    <div class="how-to-method-desc">Works in any chat, any agent, anywhere. Paste a skill URL into your prompt or have your agent curl it.</div>
-    <code>curl -s https://ethskills.com/ship/SKILL.md</code>
+    <div class="how-to-method-title">Just tell your Agent</div>
+    <div class="how-to-method-desc">Give any agent an ethskills URL and tell it to go learn. Works in ChatGPT, Claude, Cursor, Copilot — anything.</div>
+    <code>"Read ethskills.com before you start building"</code>
+  </div>
+  <div class="how-to-method">
+    <div class="how-to-method-title">curl / fetch</div>
+    <div class="how-to-method-desc">For scripting, pipelines, and system prompts. Clean markdown back, ready to use.</div>
+    <code>curl -s https://ethskills.com/SKILL.md</code>
   </div>
   <div class="how-to-method">
     <div class="how-to-method-title">Claude Code plugin</div>
-    <div class="how-to-method-desc">Installs as a Claude Code plugin — auto-loads on every Ethereum task.</div>
+    <div class="how-to-method-desc">Auto-loads Ethereum knowledge on every coding task.</div>
     <code>claude plugin install https://github.com/austintgriffith/ethskills</code>
   </div>
   <div class="how-to-method">
-    <div class="how-to-method-title">OpenClaw / ClawHub</div>
-    <div class="how-to-method-desc">Installable OpenClaw agent skill — versioned, rollback-ready. Discoverable at clawhub.com.</div>
-    <code>npx clawhub@latest install ethskills</code>
-  </div>
-  <div class="how-to-method">
-    <div class="how-to-method-title">Drop in your repo</div>
-    <div class="how-to-method-desc">Clone into your project. <code>CLAUDE.md</code>, <code>AGENTS.md</code>, and <code>llms.txt</code> are pre-symlinked to SKILL.md — Cursor, Codex, Claude, and others auto-read it.</div>
-    <code>git clone https://github.com/austintgriffith/ethskills</code>
-  </div>
-  <div class="how-to-method">
-    <div class="how-to-method-title">Full index</div>
-    <div class="how-to-method-desc">Load all skills at once. Ideal for system prompts or agent bootstrap context.</div>
-    <code>curl -s https://ethskills.com/SKILL.md</code>
+    <div class="how-to-method-title">ClawHub install</div>
+    <div class="how-to-method-desc">OpenClaw agent skill. Versioned, rollback-ready, discoverable at clawhub.com.</div>
+    <code>clawhub install ethskills</code>
   </div>
 </div>
 
