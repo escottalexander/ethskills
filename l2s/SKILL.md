@@ -167,7 +167,7 @@ forge create src/MyContract.sol:MyContract \
   --salt 0x0000000000000000000000000000000000000000000000000000000000000001
 ```
 
-**Strategy for new projects:** Start with 1 L2 (Base or Arbitrum). Prove product-market fit. Expand with CREATE2 for consistent addresses.
+**Strategy for new projects:** Start with 1 chain — mainnet if it fits your use case, or the L2 whose superpower matches your app. Prove product-market fit. Expand with CREATE2 for consistent addresses across chains.
 
 ## Testnets
 
