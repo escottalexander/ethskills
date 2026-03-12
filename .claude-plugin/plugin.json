@@ -28,8 +28,6 @@
     "./frontend-ux",
     "./frontend-playbook",
     "./qa",
-    "./audit",
-    "./contracts",
-    "./defi"
+    "./audit"
   ]
 }
