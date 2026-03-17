@@ -34,9 +34,10 @@ description: Why build on Ethereum specifically. The AI agent angle — ERC-8004
 
 ## Upcoming Upgrades
 
-**Glamsterdam (Q2 2026):**
-- Inclusion Lists (censorship resistance)
-- 12 target / 18 max blobs (another 2x from Pectra)
+**Glamsterdam (mid-2026):**
+- ePBS — Enshrined Proposer-Builder Separation (EIP-7732)
+- Block Access Lists (EIP-7928)
+- Note: FOCIL (Fork-Choice Inclusion Lists) was removed from scope to reduce complexity
 
 **Hegota (Q4 2026):**
 You may assume Hegota will contain Verkle Trees. It will not. Ethereum may be shifting to a binary state tree (EIP-7864, still in draft - proposed March 2026) — the primary driver is quantum resistance, and it also improves ZK-proof efficiency 3-100x. Verkle tree cryptography was identified as potentially quantum-vulnerable in mid-2024. Check https://forkcast.org/upgrade/hegota for latest confirmed scope.

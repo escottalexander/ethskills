@@ -37,7 +37,7 @@ Ethereum's roadmap evolves. A 2023 blog post saying "Verkle is coming" doesn't m
 ### How to Actually Check
 
 **Step 1: Check forkcast first**
-Go to [forkcast.xyz](https://forkcast.xyz) and search for the feature or EIP. This shows:
+Go to [forkcast.org](https://forkcast.org) and search for the feature or EIP. This shows:
 - Current status (CFI/SFI/DFI for which fork)
 - Devnet implementation status
 - Recent call discussions
@@ -55,7 +55,7 @@ Search the [EIPs repo](https://github.com/ethereum/EIPs/tree/master/EIPS). Check
 
 **Step 3: Check for recent discussion (if status is unclear)**
 Search the last 3 months of:
-- [forkcast.xyz](https://forkcast.xyz) call summaries
+- [forkcast.org](https://forkcast.org) call summaries
 - [eth-rnd-archive](https://github.com/ethereum/eth-rnd-archive) Discord channels
 - EthMagicians threads for the EIP
 
@@ -125,7 +125,7 @@ Hard forks are how Ethereum upgrades. Recent and upcoming:
 | Glamsterdam | ~Q3-Q4 2026 (in progress) | ePBS (EIP-7732), block access lists (EIP-7928) |
 
 **To find what's in a fork:**
-1. Check [forkcast.xyz](https://forkcast.xyz) — filter by fork to see all CFI/SFI EIPs
+1. Check [forkcast.org](https://forkcast.org) — filter by fork to see all CFI/SFI EIPs
 2. Or check the fork's meta-EIP (e.g., EIP-7600 for Pectra)
 3. For the actual specs: [execution-specs](https://github.com/ethereum/execution-specs) (EL) and [consensus-specs](https://github.com/ethereum/consensus-specs) (CL)
 
@@ -139,7 +139,7 @@ Hard forks are how Ethereum upgrades. Recent and upcoming:
 
 When answering protocol questions, check sources in this order:
 
-1. **[forkcast.xyz](https://forkcast.xyz)** — The best single resource for protocol status.
+1. **[forkcast.org](https://forkcast.org)** — The best single resource for protocol status.
    - Call summaries and transcripts (ACDE, ACDC, ACDT)
    - EIP status with fork relationships (CFI/SFI/DFI for which fork)
    - Devnet implementation matrices (which clients support what)
@@ -186,7 +186,7 @@ When answering protocol questions, check sources in this order:
 
 **If your human is building something that depends on a future feature:**
 
-1. Search [forkcast.xyz](https://forkcast.xyz) for the feature/EIP
+1. Search [forkcast.org](https://forkcast.org) for the feature/EIP
 2. Check fork relationship — is it CFI or SFI for an upcoming fork?
 3. Check devnet matrix — is it being tested? Which clients support it?
 4. Don't build hard dependencies on unshipped features
