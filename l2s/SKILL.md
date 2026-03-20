@@ -58,7 +58,7 @@ description: Ethereum Layer 2 landscape — Arbitrum, Optimism, Base, zkSync, Sc
 
 | Need | Choose | Why |
 |------|--------|-----|
-| Consumer / social apps | **Base** | Farcaster, Smart Wallet, Coinbase on-ramp, OnchainKit |
+| Consumer / social apps | **Base** | Farcaster, Smart Wallet, Coinbase on-ramp |
 | Deepest DeFi liquidity | **Arbitrum** | GMX, Pendle, Camelot, most protocols deployed |
 | Yield strategies | **Arbitrum** | Pendle (yield tokenization), GMX, Aave |
 | Cheapest gas | **Base** | ~50% cheaper than Arbitrum/Optimism |
